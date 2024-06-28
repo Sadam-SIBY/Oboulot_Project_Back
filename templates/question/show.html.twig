@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question{% endblock %}
+
+{% block body %}
+    <div class ="container ml-3 mt-3">
+        <a href="{{ path('question_list')}}"> <button type="button" class="btn btn-primary float-end">Retour</button></a>
+        <h2>{{question.content}} </h2>
+        <table class="table table-hover table-striped ml-3">
+            <thead>
+                <tr>
+                    <th>Titre de l'exercice</th>
+                    <td>{{ question.exercise.title }}</td>
+                </tr>
+                <tr>
+                    <th>Numéro</th>
+                    <td>{{ question.number }}</td>
+                </tr>
+                <tr>
+                    <th>Intitulé</th>
+                    <td>{{ question.content }}</td>
+                </tr>
+                <tr>
+                    <th>Réponse attendue</th>
+                    <td>{{ question.teacherAnswer }}</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+{% endblock %}

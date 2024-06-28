@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Envoi email réinitialisation du mot de passe{% endblock %}
+
+{% block body %}
+    <p class="ms-3 mt-3">
+        Un e-mail contenant des instructions pour réinitialiser votre mot de passe a été envoyé à l'adresse e-mail associée à votre compte. Veuillez vérifier votre boîte de réception (et éventuellement votre dossier de courrier indésirable).
+        Le lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p class="ms-3 mt-3">Si vous ne recevez pas l'e-mail de réinitialisation dans les prochaines minutes, veuillez vérifier que l'adresse e-mail que vous avez fournie est correcte ou <a href="{{ path('app_forgot_password_request') }}"> essayez à nouveau</a>.</p>
+
+    <p class="ms-3 mt-3">Merci</p>
+
+    <p class="ms-3 mt-3">L'équipe O'Boulot</p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classes{% endblock %}
+
+{% block body %}
+
+    <div class="container ml-3 mt-3 mb-5">
+        <a href="{{ path('group_list')}}" class="btn btn-primary float-end">Retour</a>
+        <h2>Modification d'une classe</h2>
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

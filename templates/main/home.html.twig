@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<div class="container my-4">
+
+    <h1 class="display-4 text-center">Bienvenue dans le BackOffice du site <strong>O'Boulot</strong>...</h1>
+
+    <div class="row mt-5">
+        <div class="col-12 col-md-6">
+            <div class="card text-white mb-3">
+                <div class="card-header text-center card_list">Liste des classes</div>
+                    <div class="card-body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {% for group in groups %}
+                                    <tr>
+                                        <td>{{group.name}}</td>
+                                        <td class="text-end ">
+                                            <a href="{{ path('group_show', {id : group.id})}}"><i class="bi bi-eye btn btn-sm btn-primary"></i></a>
+                                            <a href="{{ path('group_edit', {id : group.id})}}"><i class="bi bi-pencil-square btn btn-sm btn-warning"></i></a>
+                                            <a href="{{ path('group_remove', {id : group.id})}}"><i class="bi bi-trash btn btn-sm btn-danger"></i></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                    <div class="d-grid gap-2">
+                        <a href="{{ path('group_list')}}" class="btn col-6 mx-auto btn_see">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card text-white mb-3">
+                <div class="card-header text-center card_list">Liste des exercices</div>
+                <div class="card-body">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titre</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for exercise in exercises %}
+                                <tr>
+                                    <td>{{exercise.title}}</td>
+                                    <td class="text-end">
+                                        <a href="{{ path('exercise_show', {id : exercise.id})}}"><i class="bi bi-eye btn btn-sm btn-primary"></i></a>
+                                        <a href="{{ path('exercise_edit', {id : exercise.id})}}"><i class="bi bi-pencil-square btn btn-sm btn-warning"></i></a>
+                                        <a href="{{ path('exercise_remove', {id : exercise.id})}}"><i class="bi bi-trash btn btn-sm btn-danger"></i></a>
+                                    </td>
+                                </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-2">
+                        <a href="{{ path('exercise_list')}}" class="btn col-6 mx-auto btn_see">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# <div>Nombre d'utilisateurs inscrit sur le site : {{ nbUsers }}</div> #}
+</div>
+{% endblock %}

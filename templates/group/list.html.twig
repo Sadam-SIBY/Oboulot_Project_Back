@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classes{% endblock %}
+
+{% block body %}
+<div class ="container mt-3 ">
+    <a href="{{ path('group_create')}}" class=" btn btn-success float-end">Ajouter</a>
+    <h2>Liste des classes :</h2>
+    <table class="table table-hover table-striped flex ">
+        <thead class ="text-center ">
+            <tr>
+                <th>Classe </th>
+                <th>Niveau</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+        <tbody class ="text-center ">
+            {% for group in groups %}
+            <tr>
+                <td >{{group.name}}</td>
+                <td >{{group.level}}</td>
+                <td >
+                    <a href="{{ path('group_show', {id : group.id})}}"><i class="bi bi-eye btn btn-sm btn-primary mt-1"></i></a>
+                    <a href="{{ path('group_edit', {id : group.id})}}"><i class="bi bi-pencil-square btn btn-sm btn-warning mt-1"></i></a>
+                    <a href="{{ path('group_remove', {id : group.id})}}"><i class="bi bi-trash btn btn-sm btn-danger mt-1"></i></a>
+                </td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune classe trouvée</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
+{% endblock %}

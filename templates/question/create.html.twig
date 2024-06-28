@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une question{% endblock %}
+
+{% block body %}
+
+    <div class="container ml-3 mt-3 mb-5">
+        <a href="{{ path('question_list')}}" class="btn btn-primary float-end">Retour</a>
+        <h2>Création d'une nouvelle question</h2>
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création un message{% endblock %}
+
+{% block body %}
+
+    <div class="container ml-3 mt-3 mb-5">
+        <a href="{{ path('message_home')}}" class="btn btn-primary float-end">Retour</a>
+        <h2>Création d'un nouveau message</h2>
+        {{ form(form) }}
+    </div>
+  
+       
+{% endblock %}

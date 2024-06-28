@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+    <div class="container ml-3 mt-3">
+    <a href="{{ path('group_list')}}"> <button type="button" class="btn btn-primary float-end">Retour</button></a>
+        <h2>Liste des élèves de la classe : {{group.name}}</h2>
+        <table class="table table-hover table-striped ml-3">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>
+                        <a href="{{ path('user_show', {'id': user.id})}}"><i class="bi bi-eye btn btn-sm btn-primary mt-1"></i></a>
+                        <a href="{{ path('user_edit', {'id': user.id})}}"><i class="bi bi-pencil-square btn btn-sm btn-warning mt-1"></i></a>
+                        <a href="{{ path('user_remove', {'id' : user.id})}}"><i class="bi bi-trash btn btn-sm btn-danger mt-1"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="8">Aucun utilisateur trouvé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  </div>
+   
+
+{% endblock %}
